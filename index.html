@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FinQuest V3 — Your money, your momentum</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div class="app-shell">
+  <aside class="sidebar">
+    <a class="brand" href="#"><span class="brand-mark">🐷</span><span>finquest<span class="brand-v">V3</span><small>money skills, made joyful</small></span></a>
+    <div class="side-label">YOUR SPACE</div>
+    <nav>
+      <a class="nav-link active" href="#overview"><span>⌂</span> Overview</a>
+      <a class="nav-link" href="#learn"><span>✿</span> Learning path</a>
+      <a class="nav-link" href="#quiz"><span>✎</span> Daily quiz <i class="new-dot"></i></a>
+      <a class="nav-link" href="#planner"><span>▦</span> Budget planner</a>
+      <a class="nav-link" href="#savings"><span>◉</span> Savings goals</a>
+      <a class="nav-link" href="#coach"><span>✧</span> Money coach</a>
+    </nav>
+    <div class="sidebar-bottom">
+      <div class="mini-pig">🐽</div><b>Little steps add up!</b><p>Keep learning. Your future self says thanks.</p>
+      <div class="side-progress"><span id="sideProgress"></span></div>
+      <small id="sideProgressText">0% learning path complete</small>
+    </div>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div><div class="eyebrow" data-i18n="welcome">YOUR PERSONAL FINANCE PLAYGROUND</div><h1 id="greeting">Hey, Money Explorer! <span>✦</span></h1></div>
+      <div class="top-actions">
+        <select id="languageSelect" aria-label="Language"><option value="en">English</option><option value="ta">தமிழ்</option><option value="hi">हिन्दी</option></select>
+        <button class="icon-btn" id="themeBtn" title="Change theme">☼</button>
+        <button class="profile-pill" id="nameBtn"><span class="avatar">ME</span><span id="profileName">Money Explorer</span><span>⌄</span></button>
+      </div>
+    </header>
+
+    <section class="hero" id="overview">
+      <div class="hero-copy"><span class="pill white-pill">✦ YOUR FINANCIAL GLOW-UP STARTS HERE</span>
+        <h2>Small steps today.<br><em>Big dreams tomorrow.</em></h2>
+        <p>Learn money skills, build healthy habits and make your goals happen — one quest at a time.</p>
+        <a class="primary-btn" href="#learn">Explore learning path <span>→</span></a>
+      </div>
+      <div class="hero-art"><div class="sun"></div><div class="cloud cloud-a"></div><div class="cloud cloud-b"></div><div class="coin coin-a">₹</div><div class="coin coin-b">✦</div><div class="hero-pig">🐷</div><div class="hill"></div><div class="hero-note">dream big<br>save smart ♡</div></div>
+      <div class="hero-spark s1">✦</div><div class="hero-spark s2">✧</div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card stat-xp"><div class="stat-icon">⚡</div><div><small>TOTAL QUEST XP</small><strong id="xpValue">0</strong><span>Keep that momentum!</span></div><div class="stat-decoration">✦</div></article>
+      <article class="stat-card"><div class="stat-icon pink">🔥</div><div><small>DAY STREAK</small><strong id="streakValue">1 day</strong><span>Show up for yourself</span></div></article>
+      <article class="stat-card"><div class="stat-icon yellow">🏅</div><div><small>MODULES COMPLETED</small><strong id="moduleValue">0/6</strong><span>Your knowledge is growing</span></div></article>
+      <article class="stat-card"><div class="stat-icon lavender">🎯</div><div><small>LAST QUIZ SCORE</small><strong id="quizValue">—</strong><span>Beat your personal best</span></div></article>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel learning-panel" id="learn">
+        <div class="section-head"><div><div class="eyebrow">LEVEL UP YOUR KNOW-HOW</div><h2>Your learning garden <span>🌷</span></h2><p>Short, friendly lessons. Real-life money confidence.</p></div><span class="soft-tag" id="pathTag">0 of 6 done</span></div>
+        <div class="overall-progress"><div><span>Overall progress</span><b id="progressPercent">0%</b></div><div class="progress-track"><span id="progressBar"></span></div></div>
+        <div class="module-grid" id="moduleGrid"></div>
+      </section>
+      <aside class="right-column">
+        <section class="panel daily-card" id="quiz"><div class="daily-top"><span class="eyebrow">A LITTLE CHALLENGE</span><span class="quiz-icon">✎</span></div><h2>Daily brain boost</h2><p>Take a quick money quiz and collect XP. You’ve got this!</p><div class="quiz-meta"><span>⏱ 3–5 min</span><span>✦ 10 XP per correct</span></div><button class="primary-btn full" id="startQuiz">Start today's quiz <span>→</span></button><small id="quizStatus">A fresh chance to learn every day.</small></section>
+        <section class="panel reward-card"><div class="reward-head"><div><div class="eyebrow">YOUR REWARD CORNER</div><h3>XP looks good on you!</h3></div><span>🎁</span></div><div class="reward-meter"><div class="reward-coin">⭐</div><div><b><span id="rewardXp">0</span> XP</b><small>Every lesson earns 50 XP</small></div></div><div class="reward-level"><span>Level <b id="levelValue">1</b></span><span id="levelNext">100 XP to next level</span></div><div class="progress-track"><span id="levelBar"></span></div></section>
+      </aside>
+    </div>
+
+    <div class="content-grid lower-grid">
+      <section class="panel" id="planner"><div class="section-head"><div><div class="eyebrow">MAKE YOUR MONEY MAKE SENSE</div><h2>Budget planner <span>🧁</span></h2><p>Try a monthly plan. Your numbers stay on this device.</p></div><span class="soft-tag">Interactive tool</span></div>
+        <div class="budget-inputs"><label>Monthly income (₹)<input id="income" type="number" min="0" placeholder="e.g. 20000" value="20000"></label><label>Needs (₹)<input id="needs" type="number" min="0" placeholder="e.g. 10000" value="10000"></label><label>Wants (₹)<input id="wants" type="number" min="0" placeholder="e.g. 6000" value="6000"></label></div>
+        <div class="budget-result"><div class="budget-donut" id="budgetDonut"><div><b id="savePercent">20%</b><small>planned savings</small></div></div><div class="budget-breakdown"><div><span><i class="dot needs-dot"></i> Needs</span><b id="needsOut">₹10,000</b></div><div><span><i class="dot wants-dot"></i> Wants</span><b id="wantsOut">₹6,000</b></div><div><span><i class="dot save-dot"></i> Savings / left</span><b id="savingsOut">₹4,000</b></div><p id="budgetMessage">Nice balance! Keep it up.</p></div></div>
+      </section>
+      <section class="panel" id="savings"><div class="section-head"><div><div class="eyebrow">GROW YOUR FUTURE</div><h2>Savings goal jar <span>🏺</span></h2><p>Give a dream a number and watch it grow.</p></div></div>
+        <label class="field-label">What are you saving for?<input id="goalName" value="My next big goal" maxlength="40"></label>
+        <div class="goal-inputs"><label>Goal amount (₹)<input id="goalAmount" type="number" value="10000" min="1"></label><label>Already saved (₹)<input id="savedAmount" type="number" value="2500" min="0"></label></div>
+        <div class="goal-visual"><div class="jar">🫙<span id="jarFill"></span></div><div><strong id="goalPercent">25%</strong><p id="goalText">₹2,500 saved of ₹10,000</p><div class="progress-track"><span id="goalBar"></span></div><small id="goalRemaining">₹7,500 to go — you can do it!</small></div></div>
+        <button class="outline-btn" id="saveGoal">Save my goal</button><span class="save-feedback" id="goalFeedback"></span>
+      </section>
+    </div>
+
+    <div class="content-grid lower-grid">
+      <section class="panel" id="expenses"><div class="section-head"><div><div class="eyebrow">NOTICE YOUR MONEY HABITS</div><h2>Spending tracker <span>🧾</span></h2><p>Add a purchase and keep an eye on your spending.</p></div></div>
+        <form id="expenseForm" class="expense-form"><input id="expenseTitle" placeholder="What did you spend on?" required maxlength="60"><select id="expenseCategory"><option>Food</option><option>Travel</option><option>Study</option><option>Shopping</option><option>Other</option></select><input id="expenseAmount" type="number" min="1" placeholder="₹ Amount" required><button class="primary-btn" type="submit">+ Add</button></form>
+        <div class="expense-total">Recent entries <b id="expenseTotal">₹0 tracked</b></div><div id="expenseList" class="expense-list"><p class="empty-state">Your spending entries will appear here.</p></div>
+      </section>
+      <section class="panel coach-panel" id="coach"><div class="coach-heading"><div><div class="eyebrow">NO JUDGEMENT, JUST GUIDANCE</div><h2>Ask your money coach <span>✨</span></h2></div><div class="coach-avatar">🦉</div></div><p>Ask a question about budgeting, saving, credit, investing or staying safe online.</p>
+        <div class="suggestions"><button class="suggestion">How do I start saving?</button><button class="suggestion">Explain budgeting</button><button class="suggestion">How can I avoid scams?</button></div>
+        <div class="chat-box" id="chatBox"><div class="coach-message"><span>🦉</span><p>Hi there! I'm Penny. What's one money thing you're curious about today?</p></div></div>
+        <form id="coachForm" class="coach-input"><input id="coachQuestion" placeholder="Type your question here..." autocomplete="off"><button type="submit" aria-label="Send">➤</button></form><small class="disclaimer">Penny shares general learning tips, not personal financial advice.</small>
+      </section>
+    </div>
+    <footer>Made with ♡ for curious minds · FinQuest V3 <span>Learn kindly. Grow steadily.</span></footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="lessonModal"><div class="modal lesson-modal"><button class="close-modal" data-close>×</button><div class="eyebrow" id="lessonCategory">LEARNING QUEST</div><div class="lesson-hero-icon" id="lessonIcon">🌱</div><h2 id="lessonTitle">Lesson title</h2><p id="lessonDescription"></p><div class="lesson-list" id="lessonList"></div><button class="primary-btn full" id="completeModule">Mark module complete · +50 XP</button></div></div>
+<div class="modal-backdrop" id="quizModal"><div class="modal quiz-modal"><button class="close-modal" data-close>×</button><div class="eyebrow">DAILY BRAIN BOOST</div><div class="quiz-progress"><span id="quizProgressBar"></span></div><div class="quiz-count" id="quizCount">QUESTION 1 OF 6</div><h2 id="questionText"></h2><div id="answerOptions" class="answer-options"></div><div class="quiz-footer"><span id="quizHint">Choose the best answer</span><button class="primary-btn" id="nextQuestion" disabled>Next question →</button></div><div id="quizResult" class="quiz-result hidden"></div></div></div>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body></html>
